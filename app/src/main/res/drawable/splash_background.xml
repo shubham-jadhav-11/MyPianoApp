@@ -5,6 +5,6 @@
         android:bottom="0dp"
         android:left="0dp"
         android:drawable="@color/white"/>
-    <item android:drawable="@drawable/ic_splashscreen"
+    <item android:drawable="@drawable/blac"
         android:gravity="center"/>
 </layer-list>

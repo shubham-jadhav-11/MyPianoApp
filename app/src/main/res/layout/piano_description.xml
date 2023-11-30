@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".PianoDescriptionActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/piano_description"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/this_piano_app_provides_a_realistic_piano_playing_experience_you_can_play_your_favorite_songs_learn_how_to_play_the_piano_and_enjoy_music"
+        android:textSize="16sp"/>
+
+    <!-- Clickable Help Center Link -->
+    <TextView
+        android:id="@+id/helpCenterLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/help_center"
+        android:textColor="?attr/colorPrimary"
+        android:autoLink="web"
+        android:layout_marginTop="16dp"
+        android:focusable="true" />
+
+    <!-- Clickable Terms of Service Link -->
+    <TextView
+        android:id="@+id/termsOfServiceLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/terms_of_service"
+        android:textColor="?attr/colorPrimary"
+        android:autoLink="web"
+        android:layout_marginTop="8dp"
+        android:focusable="true" />
+
+    <!-- Clickable Privacy Policy Link -->
+    <TextView
+        android:id="@+id/privacyPolicyLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/privacy_policy"
+        android:textColor="?attr/colorPrimary"
+        android:autoLink="web"
+        android:layout_marginTop="8dp"
+        android:focusable="true" />
+</LinearLayout>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pianoapp">
+    <uses-permission android:name="android.permission.INTERNET" />
 
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,20 +14,106 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PianoApp">
 
-        <activity android:name=".SplashActivity"
-            android:theme="@style/SplashStyle"
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
             android:noHistory="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor"
+            android:theme="@style/SplashStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+                <activity
+                    android:name=".EditProfileActivity"
+                    android:exported="false">
+                    <meta-data
+                        android:name="android.app.lib_name"
+                        android:value="" />
+                </activity>
+
+
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false">
+
+
+                    <meta-data
+                        android:name="android.app.lib_name"
+                        android:value="" />
+                </activity>
+                <activity
+                    android:name=".ProfileActivity"
+                    android:exported="true">
+                    <meta-data
+                        android:name="android.app.lib_name"
+                        android:value="" />
+                </activity>
+
+
+
+
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:label="@string/title_activity_register" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
 
-        <activity android:name=".MainActivity"
-            android:screenOrientation="landscape">
+
+        <activity
+            android:name=".Settings"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+
+        <activity
+            android:name=".PianoDescriptionActivity"
+            android:exported="true"
+            android:label="@string/title_activity_piano_description" />
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_activity_main" />
+
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/Theme.PianoApp.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
+
+        <activity
+            android:name=".InAppPurchaseActivity"
+            android:label="@string/title_activity_in_app_purchase" />
+        <activity
+            android:name=".VerifyOTPActivity"
+            android:screenOrientation="unspecified"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+        <activity
+            android:name=".SendOTPActivity"
+            android:screenOrientation="unspecified"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true" />
+
     </application>
 
 </manifest>

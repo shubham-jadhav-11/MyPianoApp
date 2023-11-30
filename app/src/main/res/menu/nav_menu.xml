@@ -1,0 +1,36 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group>
+        <item
+            android:id="@+id/rate"
+            android:icon="@drawable/baseline_star_rate_24"
+            android:title="@string/rate_app" />
+
+        <item
+            android:id="@+id/share_app"
+            android:icon="@drawable/baseline_share_24"
+            android:title="@string/invite_friends" />
+
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/icons2"
+            android:title="@string/settings1" />
+
+
+        <item
+            android:id="@+id/select_language"
+            android:icon="@drawable/baseline_language_24"
+            android:title="@string/select_languages" />
+
+        <item
+            android:id="@+id/help"
+            android:icon="@android:drawable/ic_menu_help"
+            android:title="@string/help" />
+
+        <item
+            android:id="@+id/exit"
+            android:icon="@android:drawable/btn_dialog"
+            android:title="@string/exit_app" />
+    </group>
+</menu>

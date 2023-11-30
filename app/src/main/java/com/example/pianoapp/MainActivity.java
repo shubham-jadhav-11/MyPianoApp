@@ -1,33 +1,95 @@
 package com.example.pianoapp;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.SeekBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.billthefarmer.mididriver.MidiDriver;
 
-public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidiStartListener, View.OnTouchListener{
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidiStartListener, View.OnTouchListener,OnPianoListener, OnLoadAudioListener, SeekBar.OnSeekBarChangeListener,
+        View.OnClickListener, OnPianoAutoPlayListener{
 
     private MidiDriver midiDriver;
+    private PianoView pianoView;
     private byte[] event;
-    private int[] config;
-    private Button c4,d4,e4,f4,g4,a4,b4,c5,c4_b,eb4_b,f4_b,g4_b,bb4_b,c5_b;
+    private Button c4,d4,e4,f4,g4,a4,b4,c5,c4_b,eb4_b,f4_b,g4_b,bb4_b,c5_b,c5_c;
+    private final int scrollProgress = 0;
+    private final static float SEEKBAR_OFFSET_SIZE = -12;
+    private final boolean isPlay = false;
+    private final ArrayList<AutoPlayEntity> litterStarList = null;
+    private static final long LITTER_STAR_BREAK_SHORT_TIME = 500;
+    private static final long LITTER_STAR_BREAK_LONG_TIME = 1000;
 
     @SuppressLint({"NewApi", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button leftArrowButton = findViewById(R.id.iv_left_arrow);
+        SeekBar seekBar = findViewById(R.id.sb);
+        Button rightArrowButton = findViewById(R.id.iv_right_arrow);
+        Button musicButton = findViewById(R.id.iv_music);
+        // Set click listeners for buttons
 
-        c4 = (Button)findViewById(R.id.c4);
+        leftArrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle left arrow button click
+                leftArrowButton.setOnClickListener(this);
+            }
+        });
+
+        rightArrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle right arrow button click
+                rightArrowButton.setOnClickListener(this);
+            }
+        });
+
+        musicButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle music button click
+                musicButton.setOnClickListener(this);
+            }
+        });
+
+        // Set seek bar change listener
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Handle seek bar progress change
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Handle seek bar touch start
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Handle seek bar touch stop
+            }
+        });
+
+        c4 = (Button)findViewById(R.id.c4); // c4=chords name
         c4.setOnTouchListener(this);
 
         d4 = (Button)findViewById(R.id.d4);
@@ -68,11 +130,15 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
 
         c5_b = (Button)findViewById(R.id.c5_b);
         c5_b.setOnTouchListener(this);
+
+        c5_c = (Button)findViewById(R.id.c5_c);
+        c5_c.setOnTouchListener(this);
         // Instantiate the driver.
         midiDriver = new MidiDriver();
         // Set the listener.
         midiDriver.setOnMidiStartListener(this);
     }
+
 
     @Override
     protected void onResume() {
@@ -80,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         midiDriver.start();
 
         // Get the configuration.
-        config = midiDriver.config();
+        int[] config = midiDriver.config();
 
         // Print out the details.
        /* Log.d(this.getClass().getName(), "maxVoices: " + config[0]);
@@ -88,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         Log.d(this.getClass().getName(), "sampleRate: " + config[2]);
         Log.d(this.getClass().getName(), "mixBufferSize: " + config[3]);*/
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -136,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         if (v.getId() == R.id.c4) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 Log.d(this.getClass().getName(), "MotionEvent.ACTION_DOWN");
-                playNote(0x90,0x00,0x3C);
+                playNote(0x90,0x00,0x3C);  //sound note
                 c4.setBackgroundColor(getResources().getColor(R.color.touched));
             }
             if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -301,7 +368,45 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
                 c5_b.setBackgroundColor(getResources().getColor(R.color.black));
             }
         }
+        if (v.getId() == R.id.c5_c) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Log.d(this.getClass().getName(), "MotionEvent.ACTION_DOWN");
+                playNote(0x90,0x00,0x40);
+                c5_c.setBackgroundColor(getResources().getColor(R.color.t_touched));
+            }
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                Log.d(this.getClass().getName(), "MotionEvent.ACTION_UP");
+                stopNote(0x80, 0x00, 0x40);
+                c5_c.setBackgroundColor(getResources().getColor(R.color.black));
+            }
+        }
         return false;
     }
 
+
+    @Override
+    public void onClick(View v) {
+
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    private class PianoView {
+        public void scroll(Object i) {
+        }
+    }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="signup_name" type="id" />
+    <item name="signup_email" type="id" />
+    <item name="signup_username" type="id" />
+    <item name="signup_password" type="id" />
+    <item name="signup_button" type="id" />
+    <item name="loginRedirectText" type="id" />
+    <item name="bottom_navigation_view" type="id" />
+    <item name="fragment_container" type="id" />
+    <item name="inputMobile" type="id" />
+    <item name="buttonGetOTP" type="id" />
+    <item name="progressBar" type="id" />
+    <item name="inputCode1" type="id" />
+    <item name="inputCode2" type="id" />
+    <item name="inputCode3" type="id" />
+    <item name="inputCode4" type="id" />
+    <item name="inputCode5" type="id" />
+    <item name="inputCode6" type="id" />
+    <item name="textMobile" type="id" />
+    <item name="buttonVerify" type="id" />
+    <item name="textResendOTP" type="id" />
+</resources>
