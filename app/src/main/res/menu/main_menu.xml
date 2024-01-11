@@ -1,37 +1,65 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_profile"
+        android:title="@string/profile"
+        app:showAsAction="never" />
 
-    <group>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/icons2"
+        android:title="@string/settings1">
 
-        <item
-            android:id="@+id/rate"
-            android:icon="@drawable/baseline_star_rate_24"
-            android:title="@string/rate_app" />
+        <menu>
+            <item
+                android:id="@+id/select_language"
+                android:icon="@drawable/baseline_language_24"
+                android:title="@string/select_languages" />
 
-        <item
-            android:id="@+id/share_app"
-            android:icon="@drawable/baseline_share_24"
-            android:title="@string/invite_friends" />
+            <item
+                android:id="@+id/help"
+                android:icon="@android:drawable/ic_menu_help"
+                android:title="@string/help" />
 
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/icons2"
-            android:title="@string/settings1" />
+            <item
+                android:id="@+id/rate"
+                android:icon="@drawable/baseline_star_rate_24"
+                android:title="@string/rate_app" />
+
+            <item
+                android:id="@+id/share_app"
+                android:icon="@drawable/baseline_share_24"
+                android:title="@string/invite_friends" />
+
+            <item
+                android:id="@+id/action_change_theme"
+                android:title="@string/themes"
+                android:icon="@drawable/baseline_auto_fix_high_24"
+                android:menuCategory="system">
+
+                <menu>
+                    <group android:checkableBehavior="single">
+                        <item
+                            android:id="@+id/action_change_theme_to_light"
+                            android:title="@string/light_mode"
+                            android:menuCategory="system" />
+
+                        <item
+                            android:id="@+id/action_change_theme_to_dark"
+                            android:title="@string/dark_mode"
+                            android:menuCategory="system" />
+
+                        <!-- Add more theme options as needed -->
+                    </group>
+                </menu>
+            </item>
+        </menu>
+    </item>
 
 
-        <item
-            android:id="@+id/select_language"
-            android:icon="@drawable/baseline_language_24"
-            android:title="@string/select_languages" />
-
-        <item
-            android:id="@+id/help"
-            android:icon="@android:drawable/ic_menu_help"
-            android:title="@string/help" />
-
-        <item
-            android:id="@+id/exit"
-            android:icon="@android:drawable/btn_dialog"
-            android:title="@string/exit_app" />
-    </group>
+    <item
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>

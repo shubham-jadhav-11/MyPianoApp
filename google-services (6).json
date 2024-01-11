@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "701301435922",
+    "firebase_url": "https://my-piano-39482-default-rtdb.firebaseio.com",
+    "project_id": "my-piano-39482",
+    "storage_bucket": "my-piano-39482.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701301435922:android:e6837c4b6dc121186172cb",
+        "android_client_info": {
+          "package_name": "com.example.pianoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701301435922-cu9ni0t9373cjj7n3oh15ffu0ur4ertn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pianoapp",
+            "certificate_hash": "969436a2bfe7962d4c7886c5c9fe9c1db56c849f"
+          }
+        },
+        {
+          "client_id": "701301435922-kfqsabrtfflo5cgtodm2ekf6ekjdffoq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWCeWXFfRx2DMMbIyo8pQ6Redg_qfwzqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701301435922-kfqsabrtfflo5cgtodm2ekf6ekjdffoq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

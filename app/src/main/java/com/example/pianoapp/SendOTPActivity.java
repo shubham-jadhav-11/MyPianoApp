@@ -69,7 +69,7 @@ public class SendOTPActivity extends AppCompatActivity {
                                     //action
                                     Intent intent = new Intent(getApplicationContext(),VerifyOTPActivity.class);
                                     intent.putExtra("mobile",inputMobile.getText().toString());
-                                    intent.putExtra(getString(R.string.verificationid),verificationId);
+                                    intent.putExtra(getString(R.string.verificationId),verificationId);
                                     startActivity(intent);
                                 }
                             })

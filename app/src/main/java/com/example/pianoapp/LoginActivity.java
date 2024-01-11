@@ -35,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private EditText loginUsername, loginPassword;
@@ -162,6 +163,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Log.e("GoogleSignInError", "Error: " + e.getStatusCode());
             Toast.makeText(this, "Google Sign-In failed", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override

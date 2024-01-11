@@ -2,10 +2,10 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.4'
+        classpath 'com.android.tools.build:gradle:8.2.0'
         classpath 'com.google.gms:google-services:4.4.0'
         classpath 'com.google.firebase:firebase-appdistribution-gradle:4.0.1'
 
@@ -17,7 +17,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         matching {
             url 'https://maven.google.com'
         }

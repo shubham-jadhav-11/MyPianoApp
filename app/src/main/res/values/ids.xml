@@ -20,4 +20,7 @@
     <item name="textMobile" type="id" />
     <item name="buttonVerify" type="id" />
     <item name="textResendOTP" type="id" />
+    <item name="horizontalScrollView" type="id" />
+    <item name="tvWelcome" type="id" />
+    <item name="txtGuide" type="id" />
 </resources>

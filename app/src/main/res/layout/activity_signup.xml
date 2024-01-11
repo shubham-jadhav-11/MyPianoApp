@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
                 android:textAlignment="center"
-                android:textColor="@color/lavender"
+                android:textColor="#33C839"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -124,8 +124,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@color/lavender"
+                android:backgroundTint="#0866FF"
                 android:text="Sign Up"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
@@ -137,7 +138,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:text="@string/already_an_user_login"
-                android:textColor="#448AFF"
+                android:textColor="#18A608"
                 android:textSize="18sp" />
 
         </LinearLayout>

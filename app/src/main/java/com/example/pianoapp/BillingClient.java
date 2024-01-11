@@ -8,7 +8,7 @@ import com.android.billingclient.api.PurchasesUpdatedListener;
 public class BillingClient {
 
     private com.android.billingclient.api.BillingClient billingClient;
-    private Context context;
+    private final Context context;
 
     public BillingClient(Context context) {
         this.context = context;
@@ -40,7 +40,7 @@ public class BillingClient {
         });
     }
 
-    private PurchasesUpdatedListener purchasesUpdatedListener = (billingResult, purchases) -> {
+    private final PurchasesUpdatedListener purchasesUpdatedListener = (billingResult, purchases) -> {
         if (billingResult.getResponseCode() == com.android.billingclient.api.BillingClient.BillingResponseCode.OK && purchases != null) {
             // Handle the list of updated purchases here.
         }

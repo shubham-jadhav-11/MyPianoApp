@@ -64,7 +64,7 @@
     <string name="title_activity_in_app_purchase" />
     <string name="sign_up">Sign Up</string>
     <string name="already_an_user_login">Already an user? Login</string>
-   <string name="default_web_client_id">701301435922</string>
+    <string name="default_web_client_id">701301435922</string>
     <string-array name="country_codes">
         <item>+1 (US)</item>
         <item>+44 (UK)</item>
@@ -72,15 +72,15 @@
         <!-- Add more country codes as needed -->
     </string-array>
 
-    <string name="select_language" >Select Language</string>
+    <string name="select_language">Select Language</string>
     <string name="records">RECORDS</string>
     <string name="keyboard">KEYBOARD</string>
-    <string name="rate_app">Rate App 😍</string>
-    <string name="invite_friends">Invite Friends 📤</string>
-    <string name="settings1">Settings ⚙️</string>
-    <string name="select_languages">Select Language 🌐</string>
-    <string name="help">Help 📝</string>
-    <string name="exit_app">Exit App 📴</string>
+    <string name="rate_app">Rate App </string>
+    <string name="invite_friends">Invite Friends </string>
+    <string name="settings1">Settings ️</string>
+    <string name="select_languages">Select Language </string>
+    <string name="help">Help </string>
+    <string name="exit_app">Exit App </string>
     <string name="not_yet_registered_sign_up">Not yet registered? Sign Up</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="login">Login</string>
@@ -99,12 +99,24 @@
     <string name="enter_the_otp_sent_to" />
     <string name="didn_t_receive_the_otp" />
     <string name="resend_otp" />
-    <string name="verificationid">my-piano-39482</string>
+    <string name="verificationId">my-piano-39482</string>
     <string name="sunfibo_pvt_ltd">©SUNFIBO PVT.LTD</string>
     <string name="my_piano">MY PIANO</string>
     <string name="verify">verify</string>
     <string name="didnt_receive_the_otp">didnt receive the otp</string>
     <string name="we_will_send_you_an_one_time_password_on_this_mobile_numberr">we_will_send_you_an_one_time_password_on_this_mobile_number</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="logout">Logout</string>
+    <string name="otp">OTP</string>
+    <string name="number_of_keys">Number of Keys:</string>
+    <string name="change_theme" />
+    <string name="change_theme_to_dark" />
+    <string name="themes">Themes</string>
+    <string name="change_theme_to_light" />
+    <string name="light_mode">Light Mode</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="start_record_text" />
+    <string name="recording_txt" />
     <string-array name="languages">
         <item>हिन्दी</item>
         <item>मराठी</item>
@@ -115,6 +127,23 @@
         <item>Italian</item>
         <!-- Add more languages as needed -->
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="profile">Profile</string>
+    <string name="piano_playing_guide">
+
+          <![CDATA[
+    Welcome to the Piano Playing Guide!
+
+    Here are some basic instructions on how to play piano chords:
+
+    1. Position your fingers on the keys.
+    2. Press the keys gently for a softer sound, or firmly for a louder sound.
+    3. Experiment with different combinations to create beautiful melodies.
+
+    Happy playing!
+    ]]></string>
     <!-- Define labels for other activities here -->
 
 </resources>

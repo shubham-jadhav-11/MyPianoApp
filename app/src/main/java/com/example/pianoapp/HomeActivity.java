@@ -22,6 +22,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
@@ -30,14 +31,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
 
     private static final int REQUEST_PICK_FILE = 1;
-    private static final int RC_SIGN_IN =1;
-    private Button btnBrowseMusic;
+    private static final int RC_SIGN_IN = 1;
 
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
         getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
 
         setContentView(R.layout.activity_home);
+
 
         View drawerLayout = findViewById(R.id.drawer_layout);
         View menuButton = findViewById(R.id.menuButton);
@@ -80,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         // Initialize the Browse Music button
-        btnBrowseMusic = findViewById(R.id.btnBrowseMusic);
+        Button btnBrowseMusic = findViewById(R.id.btnBrowseMusic);
 
         // Define an animation for the button
         AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
@@ -120,8 +121,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     // ... (The rest of your code remains the same)
-
-
 
 
     @Override
@@ -176,16 +175,21 @@ public class HomeActivity extends AppCompatActivity {
                         // Example: Share the app (you can replace this with your sharing logic)
                         shareApp();
                         break;
-                    case R.id.exit:
-                        // Handle "Exit" click
-                        // Example: Close the app
-                        finish();
-                        break;
+                    case R.id.action_profile:
+
+                        openProfileActivity();
+                        return true;
+
+
+                    case R.id.action_logout:
+                        // Handle logout action
+                        logoutUser();
+                        return true;
                     case R.id.help:
                         showHelp();
                         break;
                     case R.id.settings:
-                        openSettings();
+
                         break;
                     case R.id.select_language:
                         showLanguageSelectionDialog();
@@ -194,6 +198,48 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 return true;
             }
+
+            private void openProfileActivity() {
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                // Pass any necessary data to the ProfileActivity using intent extras if needed
+                startActivity(intent);
+            }
+
+
+
+
+
+            private void logoutUser() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+
+                builder.setMessage("Do you really want to logout?");
+
+                // Add the buttons
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked Yes, proceed with logout
+                        FirebaseAuth.getInstance().signOut();
+
+                        // Navigate to the login screen
+                        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked No, dismiss the dialog
+                        dialog.dismiss();
+                    }
+                });
+
+                // Create and show the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+
         });
         popup.show();
     }
@@ -364,15 +410,10 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private static class GoogleBuilder {
-        public Object build() {
-            return null;
-        }
-    }
-
-    private static class EmailBuilder {
-        public Object build() {
-            return null;
-        }
+    @Override
+    public boolean onMenuItemClick(@NonNull MenuItem item) {
+        return false;
     }
 }
+
+
