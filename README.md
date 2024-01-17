@@ -1,5 +1,5 @@
 # MyPianoApp
-A java piano keyboard  using android studio.
+A Virtual piano keyboard  using android studio.
 
 # Tools Used
 - Andriod Studio
