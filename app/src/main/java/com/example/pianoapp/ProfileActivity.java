@@ -2,7 +2,6 @@ package com.example.pianoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         titleUsername = findViewById(R.id.titleUsername);
         editProfile = findViewById(R.id.editButton);
 
-        showUserData();
+        showAllUserData();
 
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,9 +43,10 @@ public class ProfileActivity extends AppCompatActivity {
                 passUserData();
             }
         });
+
     }
 
-    public void showUserData() {
+    public void showAllUserData(){
         Intent intent = getIntent();
         String nameUser = intent.getStringExtra("name");
         String emailUser = intent.getStringExtra("email");
@@ -61,38 +61,38 @@ public class ProfileActivity extends AppCompatActivity {
         profilePassword.setText(passwordUser);
     }
 
-    public void passUserData() {
+    public void passUserData(){
         String userUsername = profileUsername.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
         Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
+
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Assuming there is only one user with the given username
-                    DataSnapshot userSnapshot = snapshot.getChildren().iterator().next();
 
-                    String nameFromDB = userSnapshot.child("name").getValue(String.class);
-                    String emailFromDB = userSnapshot.child("email").getValue(String.class);
-                    String usernameFromDB = userSnapshot.child("username").getValue(String.class);
-                    String passwordFromDB = userSnapshot.child("password").getValue(String.class);
+                if (snapshot.exists()){
 
-                    // Pass user data to EditProfileActivity
-                    Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+                    String nameFromDB = snapshot.child(userUsername).child("name").getValue(String.class);
+                    String emailFromDB = snapshot.child(userUsername).child("email").getValue(String.class);
+                    String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
+                    String passwordFromDB = snapshot.child(userUsername).child("password").getValue(String.class);
+
+                    Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+
                     intent.putExtra("name", nameFromDB);
                     intent.putExtra("email", emailFromDB);
                     intent.putExtra("username", usernameFromDB);
                     intent.putExtra("password", passwordFromDB);
+
                     startActivity(intent);
-                } else {
-                    Log.d("ProfileActivity", "Snapshot does not exist");
+
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("ProfileActivity", "DatabaseError: " + error.getMessage());
+
             }
         });
     }

@@ -4,6 +4,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -75,9 +76,6 @@
         </activity>
 
         <activity
-            android:name=".InAppPurchaseActivity"
-            android:label="@string/title_activity_in_app_purchase" />
-        <activity
             android:name=".VerifyOTPActivity"
             android:screenOrientation="unspecified"
             android:windowSoftInputMode="adjustResize"
@@ -87,6 +85,8 @@
             android:screenOrientation="unspecified"
             android:windowSoftInputMode="adjustResize"
             android:exported="true" />
+
+
 
 
 

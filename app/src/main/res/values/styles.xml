@@ -66,6 +66,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:capitalize">characters</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">@font/vollkorn</item>
         <item name="android:layout_marginBottom">21dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#56BF0F</item>
@@ -80,6 +81,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:capitalize">characters</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">@font/vollkorn</item>
         <item name="android:layout_marginBottom">21dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#0BC4D5</item>
@@ -94,6 +96,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:capitalize">characters</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">@font/vollkorn</item>
         <item name="android:layout_marginBottom">21dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#0099FF</item>
@@ -108,6 +111,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:capitalize">characters</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">@font/vollkorn</item>
         <item name="android:layout_marginBottom">21dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#9933FF</item>
@@ -122,6 +126,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:capitalize">characters</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">@font/vollkorn</item>
         <item name="android:layout_marginBottom">21dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#FF33FF</item>
@@ -139,6 +144,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:capitalize">characters</item>
         <item name="android:typeface">sans</item>
+        <item name="android:fontFamily">@font/vollkorn</item>
         <item name="android:layout_marginBottom">21dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#FF33FF</item>

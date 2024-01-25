@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,9 +35,10 @@ public class HomeActivity extends AppCompatActivity implements MenuItem.OnMenuIt
 
     private static final int REQUEST_PICK_FILE = 1;
     private static final int RC_SIGN_IN = 1;
+    private SnowfallView snowfallView;
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,10 @@ public class HomeActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         getResources().updateConfiguration(configuration, getResources().getDisplayMetrics());
 
         setContentView(R.layout.activity_home);
+        snowfallView=findViewById(R.id.snowfallView);
 
+        // Start the snowfall animation
+        startSnowfall();
 
         View drawerLayout = findViewById(R.id.drawer_layout);
         View menuButton = findViewById(R.id.menuButton);
@@ -89,36 +93,49 @@ public class HomeActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         btnPlaylists.startAnimation(fadeIn);
 
         TextView tvWelcome = findViewById(R.id.tvWelcome);
-
         // Load the animation from the XML resource
         Animation fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in_animation);
-
         // Set the animation on the TextView
         tvWelcome.startAnimation(fadein);
+
+        // Create a Handler to post a delayed runnable
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Hide the TextView after 10 seconds
+                tvWelcome.setVisibility(View.GONE);
+            }
+        }, 10000);
+
         final int REQUEST_PICK_FILE = 1;
         // Set an OnClickListener for the Browse Music button
         btnBrowseMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to open the file picker
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");
+                // Create an intent to open the RecordsActivity
+                Intent intent = new Intent(HomeActivity.this,recordings.class);
 
-                // Start the file picker activity
-                startActivityForResult(intent, REQUEST_PICK_FILE);
-            }
-        });
-
-        Button btnUnlockPremium = findViewById(R.id.btnUnlockPremium);
-
-        btnUnlockPremium.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                // Start the RecordsActivity
                 startActivity(intent);
             }
         });
+
     }
+
+    private void startSnowfall() {
+        final Handler handler = new Handler();
+        final int delay = 50; // Delay between adding snowflakes (milliseconds)
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                snowfallView.addSnowflake();
+                snowfallView.moveSnowflakes();
+                handler.postDelayed(this, delay);
+            }
+        }, delay);
+    }
+
 
     // ... (The rest of your code remains the same)
 
@@ -150,10 +167,6 @@ public class HomeActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         }
     }
 
-    public void openSettings() {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-    }
 
     @SuppressLint("ResourceType")
     private void showMenu(View view) {
@@ -376,39 +389,46 @@ public class HomeActivity extends AppCompatActivity implements MenuItem.OnMenuIt
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
-        // Show a log message to check if this method is called
-        super.onBackPressed();
-        Log.d("HomeActivity", "Back button pressed");
-
-        // Show the exit confirmation dialog
-        showExitConfirmationDialog();
+        // Show the exit confirmation dialog only if the activity is not finishing
+        if (!isFinishing()) {
+            showExitConfirmationDialog();
+        }
     }
 
     private void showExitConfirmationDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do you want to exit?");
-        builder.setCancelable(false); // Prevent dismissing dialog by tapping outside
+        // Check if the activity is still in a valid state before showing the dialog
+        if (!isFinishing()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Do you want to exit?");
+            builder.setCancelable(false); // Prevent dismissing dialog by tapping outside
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // If "Yes" is pressed, finish the activity and exit the app
-                finish();
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // If "Yes" is pressed, finish the activity and exit the app
+                    finish();
+                }
+            });
+
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+
+            // Check if the activity is still in a valid state before showing the dialog
+            if (!isFinishing()) {
+                dialog.show();
             }
-        });
-
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        }
     }
+
 
     @Override
     public boolean onMenuItemClick(@NonNull MenuItem item) {

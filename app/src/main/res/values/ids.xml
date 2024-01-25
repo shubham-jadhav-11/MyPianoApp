@@ -23,4 +23,16 @@
     <item name="horizontalScrollView" type="id" />
     <item name="tvWelcome" type="id" />
     <item name="txtGuide" type="id" />
+    <item name="snowfallView" type="id" />
+    <item name="imageView" type="id" />
+    <item name="editTextCode" type="id" />
+    <item name="btn_get_verification" type="id" />
+    <item name="txt_timer" type="id" />
+    <item name="buttonSignIn" type="id" />
+    <item name="imageVieww" type="id" />
+    <item name="loadingProgressBar" type="id" />
+    <item name="btnAccept" type="id" />
+    <item name="tvDisclaimer" type="id" />
+
+
 </resources>

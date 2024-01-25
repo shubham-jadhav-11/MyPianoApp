@@ -18,7 +18,7 @@
             android:layout_height="130dp"
             android:layout_marginTop="80dp"
             android:contentDescription="Piano app"
-            android:src="@drawable/ic_send"/>
+            android:src="@drawable/message"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="50dp"
             android:gravity="center"
-            android:text="we will send you an one time password on this mobile number"
+            android:text="@string/we_will_send_you_an_one_time_password_on_this_Phone_number"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"/>
 
@@ -47,7 +47,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="enter_mobile_number"
+            android:text="Enter Mobile Number"
             android:textColor="@color/text_secondary"
             android:textSize="14sp"/>
 

@@ -7,11 +7,13 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.HorizontalScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -143,7 +145,8 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         private TextView ta7;
         private TextView tb7;
 
-
+        private boolean mStartRecording = true; // Assume recording is not started initially
+        private Chronometer mChronometer;
 
 
         private Button nextbutton;
@@ -164,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         public static String mFileName6 = null;
         private Button recordbutton;
         private Button playbutton;
-        boolean mStartRecording = true;
+
         boolean mStartPlaying = true;
         //File audiofile = null;
 
@@ -174,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
+
+
 
                 mFileName1 = getExternalCacheDir().getAbsolutePath();
                 mFileName1 += "/audiorecordtest1.3gp";
@@ -194,8 +199,7 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
                 // Set up the buttons.
                 recordbutton=(Button)findViewById(R.id.record) ;
                 playbutton=(Button)findViewById(R.id.play);
-                nextbutton=(Button)findViewById(R.id.next);
-                prevbutton=(Button)findViewById(R.id.previous);
+                mChronometer = findViewById(R.id.chronometer);
                 recordingno=1;
                 octave=(TextView) findViewById(R.id.octave);
 
@@ -512,15 +516,18 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         }
 
         private void stopPlaying() {
-                mPlayer.release();
-                mPlayer = null;
+                if (mPlayer != null) {
+                        mPlayer.release();
+                        mPlayer = null;
+                }
         }
-
         private void startRecording() {
 
                 mRecorder = new MediaRecorder();
                 mRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
                 mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                mChronometer.setBase(SystemClock.elapsedRealtime());
+                mChronometer.start();
                 switch(recordingno) {
 
 
@@ -581,6 +588,7 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
                 mRecorder.stop();
                 mRecorder.release();
                 mRecorder = null;
+                mChronometer.stop();
         }
 
         @Override
@@ -657,22 +665,25 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
 
         }
         public void next(View view) {
+                octaveno++;
+                updateOctaveText();
 
-                octaveno = octaveno + 1;
-                octave.setText("Octave "+octaveno);
                 prevbutton.setEnabled(true);
-                if(octaveno==8)
-                        nextbutton.setEnabled(false);
-
+                nextbutton.setEnabled(octaveno < 8);
         }
+
         public void prev(View view) {
-                octaveno = octaveno - 1;
-                octave.setText("Octave "+octaveno);
-                nextbutton.setEnabled(true);
-                if(octaveno==2)
-                        prevbutton.setEnabled(false);
+                octaveno--;
+                updateOctaveText();
 
+                nextbutton.setEnabled(true);
+                prevbutton.setEnabled(octaveno > 2);
         }
+
+        private void updateOctaveText() {
+                octave.setText("Octave " + octaveno);
+        }
+
 
 
 
@@ -1032,6 +1043,18 @@ public class MainActivity extends AppCompatActivity implements MidiDriver.OnMidi
         public void showGuide(View view) {
                 Intent intent = new Intent(this, GuideActivity.class);
                 startActivity(intent);
+        }
+
+    public void increaseKeySize(View view) {
+
+
+
+    }
+
+        public void decreaseKeySize(View view) {
+
+
+
         }
 }
 

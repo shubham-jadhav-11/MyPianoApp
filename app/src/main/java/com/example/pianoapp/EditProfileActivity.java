@@ -1,5 +1,6 @@
 package com.example.pianoapp;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +38,7 @@ public class EditProfileActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isNameChanged() || isEmailChanged() || isPasswordChanged()) {
+                if (isNameChanged() || isPasswordChanged() || isEmailChanged()){
                     Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
@@ -46,37 +47,39 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
-    public boolean isNameChanged(){
+    private boolean isNameChanged() {
         if (!nameUser.equals(editName.getText().toString())){
             reference.child(usernameUser).child("name").setValue(editName.getText().toString());
             nameUser = editName.getText().toString();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
 
-    public boolean isEmailChanged(){
-        if (!emailUser.equals(editName.getText().toString())){
+    private boolean isEmailChanged() {
+        if (!emailUser.equals(editEmail.getText().toString())){
             reference.child(usernameUser).child("email").setValue(editEmail.getText().toString());
             emailUser = editEmail.getText().toString();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
 
-    public boolean isPasswordChanged(){
+
+    private boolean isPasswordChanged() {
         if (!passwordUser.equals(editPassword.getText().toString())){
             reference.child(usernameUser).child("password").setValue(editPassword.getText().toString());
             passwordUser = editPassword.getText().toString();
             return true;
-        } else{
+        } else {
             return false;
         }
     }
 
     public void showData(){
+
         Intent intent = getIntent();
 
         nameUser = intent.getStringExtra("name");

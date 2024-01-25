@@ -31,28 +31,6 @@
                 android:icon="@drawable/baseline_share_24"
                 android:title="@string/invite_friends" />
 
-            <item
-                android:id="@+id/action_change_theme"
-                android:title="@string/themes"
-                android:icon="@drawable/baseline_auto_fix_high_24"
-                android:menuCategory="system">
-
-                <menu>
-                    <group android:checkableBehavior="single">
-                        <item
-                            android:id="@+id/action_change_theme_to_light"
-                            android:title="@string/light_mode"
-                            android:menuCategory="system" />
-
-                        <item
-                            android:id="@+id/action_change_theme_to_dark"
-                            android:title="@string/dark_mode"
-                            android:menuCategory="system" />
-
-                        <!-- Add more theme options as needed -->
-                    </group>
-                </menu>
-            </item>
         </menu>
     </item>
 

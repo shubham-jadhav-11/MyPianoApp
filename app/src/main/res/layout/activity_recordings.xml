@@ -6,19 +6,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp"
-    android:background="#000000">
+    android:background="@drawable/blac">
 
 
         <Button
             android:id="@+id/record1"
-
             android:text="Play Song 1"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
-
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:background="@drawable/playsongshape"
+            android:background="@drawable/grradient"
             android:onClick="play1"
             android:layout_marginLeft="45dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -30,10 +28,9 @@
             android:text="Play Song 2"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
-
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:background="@drawable/playsongshape"
+            android:background="@drawable/grradient"
             android:onClick="play2"
             android:layout_marginTop="30dp"
             app:layout_constraintTop_toBottomOf="@+id/record1"
@@ -48,7 +45,7 @@
 
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:background="@drawable/playsongshape"
+            android:background="@drawable/grradient"
             android:onClick="play3"
             android:layout_marginTop="30dp"
             app:layout_constraintTop_toBottomOf="@+id/record2"
@@ -63,7 +60,7 @@
 
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:background="@drawable/playsongshape"
+            android:background="@drawable/grradient"
             android:onClick="play4"
             android:layout_marginRight="45dp"
             app:layout_constraintRight_toRightOf="parent"
@@ -75,10 +72,9 @@
             android:text="Play Song 5"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
-
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:background="@drawable/playsongshape"
+            android:background="@drawable/grradient"
             android:onClick="play5"
             android:layout_marginTop="30dp"
             app:layout_constraintTop_toBottomOf="@+id/record4"
@@ -93,7 +89,7 @@
 
             android:layout_width="220dp"
             android:layout_height="50dp"
-            android:background="@drawable/playsongshape"
+            android:background="@drawable/grradient"
             android:onClick="play6"
             android:layout_marginRight="45dp"
             app:layout_constraintRight_toRightOf="parent"
@@ -105,10 +101,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40sp"
-            android:textColor="#FFDD00"
-
+            android:textColor="#00ACC1"
+            android:textStyle="bold"
             android:textAlignment="center"
-            android:text="MY SONGS"
+            android:text="MY RECORDS"
+            android:textAppearance="@drawable/grradient"
             android:layout_marginLeft="179dp"
             app:layout_constraintLeft_toLeftOf="@+id/record1"
             app:layout_constraintTop_toTopOf="parent"

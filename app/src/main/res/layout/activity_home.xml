@@ -24,9 +24,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:background="@drawable/tiles"
+        android:background="@drawable/bg3"
         tools:ignore="ExtraText">
 
+        <com.example.pianoapp.SnowfallView
+            android:id="@+id/snowfallView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
         <ImageButton
@@ -46,130 +50,137 @@
 
 
         <LinearLayout
-            android:layout_width="377dp"
-            android:layout_height="573dp"
+            android:layout_width="wrap_content"
+            android:layout_height="638dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="170dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginTop="181dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="47dp"
             android:orientation="vertical"
             android:padding="16dp"
             tools:ignore="ExtraText">
 
-            <TextView
-                android:id="@+id/tvWelcome"
-                android:layout_width="357dp"
-                android:layout_height="66dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="6dp"
-                android:animateLayoutChanges="true"
-                android:backgroundTintMode="src_in"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:gravity="center"
-                android:letterSpacing="0.02"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/welcome_to_the_music_app"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="21sp"
-                android:textStyle="bold"
-                app:drawableTint="@color/ic_launcher_background"
-                tools:ignore="TextSizeCheck" />
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_height="165dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="14dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="108dp"
+                    android:layout_height="110dp"
+                    android:layout_margin="17dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="20dp">
+
+                    <Button
+                        android:id="@+id/btnBrowseMusic"
+                        android:layout_width="79dp"
+                        android:layout_height="74dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/mfolde"
+                        android:contentDescription="@string/saved_library"
+                        android:textColor="@color/ic_launcher_background"
+                        android:textSize="5sp" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="@string/records"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_overlay"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat,TextSizeCheck" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="141dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="14dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="108dp"
+                    android:layout_height="110dp"
+                    android:layout_margin="18dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/lavender_border"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="20dp">>
 
-                <Button
-                    android:id="@+id/btnBrowseMusic"
-                    android:layout_width="99dp"
-                    android:layout_height="93dp"
+                    <Button
+                        android:id="@+id/btnPlaylists"
+                        android:layout_width="69dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/logo"
+                        android:baselineAligned="true"
+                        android:contentDescription="@string/saved_library"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
 
 
-                    android:background="@drawable/folder"
-                    android:contentDescription="@string/saved_library"
-                    android:textColor="@color/white"
-                    android:textSize="5sp" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/records"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="2dp"
-                    android:textSize="20sp"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="-9dp"
+                    android:text="@string/keyboard"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_overlay"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    tools:ignore="TextSizeCheck" />
+                    tools:ignore="RtlCompat,TextSizeCheck" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:animateLayoutChanges="true"
+                android:backgroundTintMode="src_in"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:letterSpacing="0.02"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/welcome_to_the_chords_craft2"
+                android:textAllCaps="true"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableTint="@color/ic_launcher_background"
+                app:fontFamily="@font/vollkorn"
+                tools:ignore="TextSizeCheck" />
 
 
-                <Button
-                    android:id="@+id/btnPlaylists"
-                    android:layout_width="99dp"
-                    android:layout_height="93dp"
-                    android:background="@drawable/p6"
-                    android:baselineAligned="true"
-                    android:contentDescription="@string/saved_library"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/keyboard"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:ignore="TextSizeCheck" />
-
-            </LinearLayout>
 
 
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/btnUnlockPremium"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="27dp"
-            android:background="@drawable/crown2"
-            android:clickable="true"
-            android:contentDescription="@string/premium"
-            android:focusable="true"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="14dp"
-            android:gravity="center"
-            android:orientation="vertical"/>
 
     </RelativeLayout>
 

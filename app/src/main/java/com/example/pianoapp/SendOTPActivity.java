@@ -1,6 +1,5 @@
 package com.example.pianoapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,17 +20,15 @@ import java.util.concurrent.TimeUnit;
 
 public class SendOTPActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_otpactivity);
 
-
         //init
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final EditText inputMobile = findViewById(R.id.inputMobile);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final Button buttonGetOTP = findViewById(R.id.buttonGetOTP);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final ProgressBar progressBar = findViewById(R.id.progressBar);
+        final EditText inputMobile = findViewById(R.id.inputMobile);
+        final Button buttonGetOTP = findViewById(R.id.buttonGetOTP);
+        final ProgressBar progressBar = findViewById(R.id.progressBar);
 
         buttonGetOTP.setOnClickListener(v -> {
             //toast error
@@ -69,7 +66,7 @@ public class SendOTPActivity extends AppCompatActivity {
                                     //action
                                     Intent intent = new Intent(getApplicationContext(),VerifyOTPActivity.class);
                                     intent.putExtra("mobile",inputMobile.getText().toString());
-                                    intent.putExtra(getString(R.string.verificationId),verificationId);
+                                    intent.putExtra("verificationId",verificationId);
                                     startActivity(intent);
                                 }
                             })
